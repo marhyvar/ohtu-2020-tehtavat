@@ -1,3 +1,4 @@
 # ohtu-2020-tehtavat
 
-avoin yliopisto
+Ohjelmistotuotanto 2020 avoin yliopisto
+

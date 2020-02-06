@@ -1,7 +1,12 @@
 package ohtu.verkkokauppa;
 
-public class Pankki implements IOpankki {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
+public class Pankki implements IOpankki {
+	
+	@Autowired
     private IOkirjanpito kirjanpito;
 
     public Pankki(IOkirjanpito kirjanpito) {

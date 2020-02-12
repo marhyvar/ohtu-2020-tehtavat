@@ -54,8 +54,8 @@ public class Player {
 	
     @Override
     public String toString() {
-        return String.format("%-20s",name) + " team " + team + " goals " + goals + " assists " 
-                + assists + " points " + getPoints();
+        return String.format("%-20s",name) + " " + team + " " + String.format("%2d",goals) + " + " 
+                + String.format("%2d",assists) + " = " + getPoints();
     }
       
 }

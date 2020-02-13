@@ -1,2 +1,15 @@
-/.gradle/
-/build/
+# Ignore Gradle project-specific cache directory
+.gradle/
+
+# Ignore Gradle build output directory
+build/
+
+#Ignore computer-specific properties
+gradle.properties
+
+# ignore eclipse settings
+.settings/
+.classpath
+.project
+bin/main/.gitignore
+bin/test/.gitignore

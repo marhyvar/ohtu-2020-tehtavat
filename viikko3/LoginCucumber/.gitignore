@@ -6,3 +6,10 @@ build/
 
 #Ignore computer-specific properties
 gradle.properties
+
+# ignore eclipse settings
+.settings/
+.classpath
+.project
+bin/main/.gitignore
+bin/test/.gitignore

@@ -14,3 +14,13 @@ Feature: A new user account can be created if a proper unused username and passw
         Given command new is selected
         When  username "pe" and password "Salai!nen88" are entered
         Then  system will respond with "new user not registered"
+        
+	Scenario: creation fails with valid username and too short password
+        Given command new is selected
+        When  username "eero" and password "Salai!" are entered
+        Then  system will respond with "new user not registered"
+        
+Scenario: creation fails with valid username and password long enough but consisting of only letters
+        Given command new is selected
+        When  username "eero" and password "Salaisuusonsalainen" are entered
+        Then  system will respond with "new user not registered"

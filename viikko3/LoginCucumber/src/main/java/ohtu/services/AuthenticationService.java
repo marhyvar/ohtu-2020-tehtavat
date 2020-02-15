@@ -58,7 +58,7 @@ public class AuthenticationService {
     				return false;
     			}
     			//some other special letters ok, too
-    			if (pwd.charAt(i)>90 && pwd.charAt(i)<=97) {
+    			if (pwd.charAt(i)>90 && pwd.charAt(i)<=96) {
     				return false;
     			}
     		}

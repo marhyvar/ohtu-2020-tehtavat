@@ -4,6 +4,7 @@ import ohtu.data_access.InMemoryUserDao;
 import ohtu.data_access.UserDao;
 import ohtu.io.ConsoleIO;
 import ohtu.io.IO;
+import ohtu.io.StubIO;
 import ohtu.services.AuthenticationService;
 import java.util.Arrays;
 
@@ -53,10 +54,15 @@ public class App {
     }
 
     public static void main(String[] args) {
-        UserDao dao = new InMemoryUserDao();
+        /*UserDao dao = new InMemoryUserDao();
         IO io = new ConsoleIO();
         AuthenticationService auth = new AuthenticationService(dao);
+        new App(io, auth).run();*/
+    	UserDao dao = new InMemoryUserDao();  
+        StubIO io = new StubIO(Arrays.asList("new", "pe", "Salai!nen88"));   
+        AuthenticationService auth = new AuthenticationService(dao);
         new App(io, auth).run();
+        System.out.println(io.getPrints());
     }
     
     // testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista

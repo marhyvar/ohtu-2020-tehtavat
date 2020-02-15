@@ -42,17 +42,30 @@ public class AuthenticationService {
         // validity check of username and password
     	String name = username.trim();
     	String pwd = password.trim();
+    	char[] array = pwd.toCharArray();
     	if (name.length() >= 3 && pwd.length() >= 8) {
+    		//if there are some other than lowercase letters, invalid!
     		if (name.matches("[^a-z]")) {
-    			return false;
-    		}
-    		if (pwd.matches("[^A-z]")) {
     			return true;
-    		} else {
-    			return false;
     		}
+
+    		for (int i = 0; i< array.length; i++) {
+    			/*if (Character.isDigit(array[i])) {
+    				return false;
+    			} */
+    			//if contains something else than alphabetic letters
+    			if (pwd.charAt(i)<64 || pwd.charAt(i) > 122) {
+    				return false;
+    			}
+    			//some other special letters ok, too
+    			if (pwd.charAt(i)>90 && pwd.charAt(i)<=97) {
+    				return false;
+    			}
+    		}
+    		return true;
+    		
     	} else {
-    		return false;
+    		return true;
     	}
     }
 }

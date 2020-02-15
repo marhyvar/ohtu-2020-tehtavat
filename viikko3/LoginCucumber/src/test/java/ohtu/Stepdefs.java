@@ -34,6 +34,18 @@ public class Stepdefs {
     public void commandNewIsSelected() {
     	inputLines.add("new");
     }
+    
+    @Given("user {string} with password {string} is created")
+    public void userWithPasswordIsCreated(String username, String password) {
+        // Write code here that turns the phrase above into concrete actions
+    	inputLines.add("new");
+    	inputLines.add(username);
+        inputLines.add(password);
+        
+        io = new StubIO(inputLines); 
+        app = new App(io, auth);
+        app.run();
+    }
 
     @When("username {string} and password {string} are entered")
     public void usernameAndPasswordAreEntered(String username, String password) {

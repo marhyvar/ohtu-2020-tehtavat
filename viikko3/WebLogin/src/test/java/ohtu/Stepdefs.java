@@ -21,7 +21,14 @@ public class Stepdefs {
         driver.get(baseUrl);
         WebElement element = driver.findElement(By.linkText("login"));       
         element.click();   
-    }    
+    } 
+
+	@Given("command new user is selected")
+    public void commandNewUserIsSelected() {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));       
+        element.click();   
+    }
     
     @When("correct username {string} and password {string} are given")
     public void correctUsernameAndPasswordAreGiven(String username, String password) {
@@ -59,6 +66,17 @@ public class Stepdefs {
     public void systemWillRespond(String pageContent) throws Throwable {
         assertTrue(driver.getPageSource().contains(pageContent));
     }
+	
+	@When("a valid username {string} and password {string} and matching password confirmation are entered")
+    public void aValidUsernameAndPasswordAndMatchingPasswordConfirmationAreEntered(String username, String password) {
+        signUpWith(username, password, password);
+        
+    }
+
+    @Then("a new user is created")
+    public void aNewUserIsCreated() {
+        pageHasContent("Welcome to Ohtu Application!");      
+    }
     
     @After
     public void tearDown(){
@@ -80,4 +98,16 @@ public class Stepdefs {
         element = driver.findElement(By.name("login"));
         element.submit();  
     } 
+		
+	private void signUpWith(String username, String password, String passwordConfirmation) {
+		assertTrue(driver.getPageSource().contains("Create username and give password"));
+		WebElement element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+        element = driver.findElement(By.name("password"));
+		element.sendKeys(password);
+		element = driver.findElement(By.name("passwordConfirmation"));
+		element.sendKeys(passwordConfirmation);		
+		element = driver.findElement(By.name("signup"));
+        element.submit();
+	}
 }

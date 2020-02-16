@@ -9,3 +9,8 @@ Feature: A new user account can be created if a proper unused username and passw
         Given command new user is selected
         When  invalid username "po" and password "salainen1" and matching password confirmation are entered
         Then user is not created and error "username should have at least 3 characters" is reported
+		
+	Scenario: creation fails with correct username and too short password
+        Given command new user is selected
+        When  a valid username "liisa" and invalid password "me1" and matching password confirmation are entered
+        Then user is not created and error "password should have at least 8 characters" is reported

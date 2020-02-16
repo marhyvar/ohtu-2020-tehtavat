@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.Random;
 
 public class Tester {
 
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
+		Random r = new Random();
 
         driver.get("http://localhost:4567");
         
@@ -20,7 +22,7 @@ public class Tester {
 		sleep(2);
 		
 		element = driver.findElement(By.name("username"));
-        element.sendKeys("anja");
+        element.sendKeys("rulla" + r.nextInt(100000));
         element = driver.findElement(By.name("password"));
 		element.sendKeys("salaisuus");
 		element = driver.findElement(By.name("passwordConfirmation"));
@@ -33,6 +35,15 @@ public class Tester {
 
         sleep(3);
         
+		element = driver.findElement(By.linkText("continue to application mainpage"));
+		
+		element.click();
+		
+		sleep(2);
+		
+		element = driver.findElement(By.linkText("logout"));
+		element.click();
+		
         driver.quit();
 		
         /*WebElement element = driver.findElement(By.linkText("login"));

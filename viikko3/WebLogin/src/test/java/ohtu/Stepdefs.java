@@ -77,6 +77,17 @@ public class Stepdefs {
     public void aNewUserIsCreated() {
         pageHasContent("Welcome to Ohtu Application!");      
     }
+	
+	@When("invalid username {string} and password {string} and matching password confirmation are entered")
+    public void invalidUsernameAndPasswordAndMatchingPasswordConfirmationAreEntered(String username, String password) {
+        signUpWith(username, password, password);
+    }
+
+    @Then("user is not created and error {string} is reported")
+    public void userIsNotCreatedAndErrorIsReported(String error) {
+        pageHasContent(error);
+		pageHasContent("Create username and give password");
+    }
     
     @After
     public void tearDown(){

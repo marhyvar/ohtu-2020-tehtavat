@@ -9,3 +9,4 @@ build
 #Ignore eclipse settings
 .classpath
 .project
+.settings/

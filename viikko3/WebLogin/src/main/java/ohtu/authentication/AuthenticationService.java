@@ -38,6 +38,10 @@ public class AuthenticationService {
 			status.addError("password should have at least 8 characters");
 		}
 		
+		if ( !password.equals(passwordConfirmation) ) {
+			status.addError("password and password confirmation do not match");
+		}
+		
 		if (invalid(username, password) ) {
 			status.addError("invalid username or password");
 		}

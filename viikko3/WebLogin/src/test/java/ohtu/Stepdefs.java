@@ -88,6 +88,10 @@ public class Stepdefs {
         signUpWith(username, password, password);
     }
 
+	@When("a valid username {string} and password {string} and non-matching password confirmation {string} are entered")
+    public void aValidUsernameAndPasswordAndNonMatchingPasswordConfirmationAreEntered(String username, String password, String passwordConfirmation) {
+        signUpWith(username, password, passwordConfirmation);
+    }
 
     @Then("user is not created and error {string} is reported")
     public void userIsNotCreatedAndErrorIsReported(String error) {

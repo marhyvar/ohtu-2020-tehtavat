@@ -13,3 +13,5 @@ gradle.properties
 .project
 bin/main/.gitignore
 bin/test/.gitignore
+
+bin/

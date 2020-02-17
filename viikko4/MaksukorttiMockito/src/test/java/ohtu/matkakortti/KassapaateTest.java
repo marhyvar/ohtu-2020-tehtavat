@@ -5,6 +5,8 @@ import ohtu.matkakortti.Maksukortti;
 import ohtu.matkakortti.Kassapaate;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -40,5 +42,17 @@ public class KassapaateTest {
         verify(kortti, times(1)).getSaldo();
         verify(kortti, times(0)).osta(anyInt());
     }
-      
+    
+    @Test
+    public void kortilleLadataanJosLadattavaSummaPositiivinen() {
+
+    	kassa.lataa(kortti, 10);   	
+    	verify(kortti, times(1)).lataa(10);
+    	verify(kassa).lataa(eq(kortti), eq(10));
+    }
+    
+    @Test
+    public void kortilleEiLadataJosLadattavaSummaNegatiivinen() {
+    	
+    }
 }

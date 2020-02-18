@@ -145,7 +145,20 @@ public class KauppaTest {
         k.lisaaKoriin(1);     // ostetaan tuotetta numero 1 eli maitoa
         k.tilimaksu("pekka", "12345");
     	
-        verify(pankki).tilisiirto(anyString(), eq(3), anyString(), anyString(),anyInt());
+        verify(pankki).tilisiirto(anyString(), eq(3), anyString(), anyString(), anyInt());
+    }
+    
+    @Test
+    public void tuotteenPoistaminenKoristaPaivittaaOstoksenHinnanOikein() {
+    	
+    	// tehd‰‰n ostokset 
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1);     // ostetaan tuotetta numero 1 eli maitoa, hinta 5
+        k.lisaaKoriin(2);     // ostetaan tuotetta numero 2 eli juustoa
+        k.poistaKorista(2);   //poistetaan tuote numero 2 
+        k.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(anyString(), anyInt(), anyString(), anyString(), eq(5));
     }
 }
 

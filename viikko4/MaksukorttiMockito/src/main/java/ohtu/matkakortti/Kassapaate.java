@@ -9,7 +9,11 @@ public class Kassapaate {
     }
     
     public void lataa(Maksukortti kortti, int summa){
-        kortti.lataa(summa);
+    	if (summa > 0) {
+    		kortti.lataa(summa);
+    	} else {
+    		return;
+    	}       
     }
     
     public void ostaLounas(Maksukortti kortti) {

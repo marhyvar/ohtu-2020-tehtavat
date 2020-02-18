@@ -67,6 +67,18 @@ public class KauppaTest {
         // sitten suoritetaan varmistus, ett‰ pankin metodia tilisiirto on kutsuttu
         verify(pankki).tilisiirto(eq("pekka"), eq(42), eq("12345"), eq("33333-44455"), eq(15));
     }
+    
+    @Test
+    public void kahdenSamanTuotteenOstoksenPaatyttyaPankinMetodiaTilisiirtoKutsutaanOikeillaParametreilla() {
+    	// tehd‰‰n ostokset
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1);     // ostetaan tuotetta numero 1 eli maitoa
+        k.lisaaKoriin(1);     // ostetaan tuotetta numero 1 eli maitoa
+        k.tilimaksu("pekka", "12345");
+        
+        // sitten suoritetaan varmistus, ett‰ pankin metodia tilisiirto on kutsuttu
+        verify(pankki).tilisiirto(eq("pekka"), eq(42), eq("12345"), eq("33333-44455"), eq(10));
+    }
 }
 
 

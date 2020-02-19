@@ -7,14 +7,12 @@ public class IntJoukko {
                             OLETUSKASVATUS = 5;  // luotava uusi taulukko on 
     // näin paljon isompi kuin vanha
     private int kasvatuskoko;     // Uusi taulukko on tämän verran vanhaa suurempi.
-    private int[] ljono;      // Joukon luvut säilytetään taulukon alkupäässä. 
+    private int[] lukujonoTaulukko;      // Joukon luvut säilytetään taulukon alkupäässä. 
     private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla. 
 
     public IntJoukko() {
-        ljono = new int[KAPASITEETTI];
-        for (int i = 0; i < ljono.length; i++) {
-            ljono[i] = 0;
-        }
+        lukujonoTaulukko = new int[KAPASITEETTI];
+        alustaTaulukko(lukujonoTaulukko);
         alkioidenLkm = 0;
         this.kasvatuskoko = OLETUSKASVATUS;
     }
@@ -23,10 +21,8 @@ public class IntJoukko {
         if (kapasiteetti < 0) {
             return;
         }
-        ljono = new int[kapasiteetti];
-        for (int i = 0; i < ljono.length; i++) {
-            ljono[i] = 0;
-        }
+        lukujonoTaulukko = new int[kapasiteetti];
+        alustaTaulukko(lukujonoTaulukko);
         alkioidenLkm = 0;
         this.kasvatuskoko = OLETUSKASVATUS;
 
@@ -40,10 +36,8 @@ public class IntJoukko {
         if (kasvatuskoko < 0) {
             throw new IndexOutOfBoundsException("kapasiteetti2");//heitin vaan jotain :D
         }
-        ljono = new int[kapasiteetti];
-        for (int i = 0; i < ljono.length; i++) {
-            ljono[i] = 0;
-        }
+        lukujonoTaulukko = new int[kapasiteetti];
+        alustaTaulukko(lukujonoTaulukko);
         alkioidenLkm = 0;
         this.kasvatuskoko = kasvatuskoko;
 
@@ -53,20 +47,20 @@ public class IntJoukko {
 
         int eiOle = 0;
         if (alkioidenLkm == 0) {
-            ljono[0] = luku;
+            lukujonoTaulukko[0] = luku;
             alkioidenLkm++;
             return true;
         } else {
         }
         if (!kuuluu(luku)) {
-            ljono[alkioidenLkm] = luku;
+            lukujonoTaulukko[alkioidenLkm] = luku;
             alkioidenLkm++;
-            if (alkioidenLkm % ljono.length == 0) {
-                int[] taulukkoOld = new int[ljono.length];
-                taulukkoOld = ljono;
-                kopioiTaulukko(ljono, taulukkoOld);
-                ljono = new int[alkioidenLkm + kasvatuskoko];
-                kopioiTaulukko(taulukkoOld, ljono);
+            if (alkioidenLkm % lukujonoTaulukko.length == 0) {
+                int[] taulukkoOld = new int[lukujonoTaulukko.length];
+                taulukkoOld = lukujonoTaulukko;
+                kopioiTaulukko(lukujonoTaulukko, taulukkoOld);
+                lukujonoTaulukko = new int[alkioidenLkm + kasvatuskoko];
+                kopioiTaulukko(taulukkoOld, lukujonoTaulukko);
             }
             return true;
         }
@@ -76,7 +70,7 @@ public class IntJoukko {
     public boolean kuuluu(int luku) {
         int on = 0;
         for (int i = 0; i < alkioidenLkm; i++) {
-            if (luku == ljono[i]) {
+            if (luku == lukujonoTaulukko[i]) {
                 on++;
             }
         }
@@ -91,17 +85,17 @@ public class IntJoukko {
         int kohta = -1;
         int apu;
         for (int i = 0; i < alkioidenLkm; i++) {
-            if (luku == ljono[i]) {
+            if (luku == lukujonoTaulukko[i]) {
                 kohta = i; //siis luku löytyy tuosta kohdasta :D
-                ljono[kohta] = 0;
+                lukujonoTaulukko[kohta] = 0;
                 break;
             }
         }
         if (kohta != -1) {
             for (int j = kohta; j < alkioidenLkm - 1; j++) {
-                apu = ljono[j];
-                ljono[j] = ljono[j + 1];
-                ljono[j + 1] = apu;
+                apu = lukujonoTaulukko[j];
+                lukujonoTaulukko[j] = lukujonoTaulukko[j + 1];
+                lukujonoTaulukko[j + 1] = apu;
             }
             alkioidenLkm--;
             return true;
@@ -122,20 +116,25 @@ public class IntJoukko {
         return alkioidenLkm;
     }
 
+    private void alustaTaulukko(int[] taulukko) {
+    	for (int i = 0; i < taulukko.length; i++) {
+            taulukko[i] = 0;
+        }
+    }
 
     @Override
     public String toString() {
         if (alkioidenLkm == 0) {
             return "{}";
         } else if (alkioidenLkm == 1) {
-            return "{" + ljono[0] + "}";
+            return "{" + lukujonoTaulukko[0] + "}";
         } else {
             String tuotos = "{";
             for (int i = 0; i < alkioidenLkm - 1; i++) {
-                tuotos += ljono[i];
+                tuotos += lukujonoTaulukko[i];
                 tuotos += ", ";
             }
-            tuotos += ljono[alkioidenLkm - 1];
+            tuotos += lukujonoTaulukko[alkioidenLkm - 1];
             tuotos += "}";
             return tuotos;
         }
@@ -144,7 +143,7 @@ public class IntJoukko {
     public int[] toIntArray() {
         int[] taulu = new int[alkioidenLkm];
         for (int i = 0; i < taulu.length; i++) {
-            taulu[i] = ljono[i];
+            taulu[i] = lukujonoTaulukko[i];
         }
         return taulu;
     }

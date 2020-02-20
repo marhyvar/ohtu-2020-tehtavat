@@ -27,8 +27,7 @@ public class IntJoukko {
         this.kasvatuskoko = OLETUSKASVATUS;
 
     }
-    
-    
+       
     public IntJoukko(int kapasiteetti, int kasvatuskoko) {
         if (kapasiteetti < 0) {
             throw new IndexOutOfBoundsException("Kapasitteetti vÃ¤Ã¤rin");//heitin vaan jotain :D
@@ -45,14 +44,9 @@ public class IntJoukko {
 
     public boolean lisaa(int luku) {
 
-        int eiOle = 0;
-        if (alkioidenLkm == 0) {
-            lukujonoTaulukko[0] = luku;
-            alkioidenLkm++;
-            return true;
-        } else {
-        }
-        if (!kuuluu(luku)) {
+    	if (kuuluu(luku)) { //luku on jo joukossa eli ei tehdä lisäystä
+    		return false;
+    	} else {
             lukujonoTaulukko[alkioidenLkm] = luku;
             alkioidenLkm++;
             if (alkioidenLkm % lukujonoTaulukko.length == 0) {
@@ -64,16 +58,15 @@ public class IntJoukko {
             }
             return true;
         }
-        return false;
     }
 
-    public boolean kuuluu(int luku) {
-        for (int i = 0; i < alkioidenLkm; i++) {
-            if (luku == lukujonoTaulukko[i]) {
+    public boolean kuuluu(int luku) {   	
+    	for (int i : lukujonoTaulukko) {
+    		if (luku == i) {
                 return true;
-            }
-        }
-        return false;
+            } 
+    	}
+    	return false;
     }
 
     public boolean poista(int luku) {
@@ -105,6 +98,10 @@ public class IntJoukko {
             uusi[i] = vanha[i];
         }
 
+    }
+    
+    private void kopioiJaKasvataTaulukkoa(int[] vanha, int[] uusi) {
+    	
     }
 
     public int mahtavuus() {

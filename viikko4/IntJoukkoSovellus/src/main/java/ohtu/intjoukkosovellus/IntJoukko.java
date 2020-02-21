@@ -30,10 +30,10 @@ public class IntJoukko {
        
     public IntJoukko(int kapasiteetti, int kasvatuskoko) {
         if (kapasiteetti < 0) {
-            throw new IndexOutOfBoundsException("Kapasitteetti väärin");//heitin vaan jotain :D
+            return;
         }
         if (kasvatuskoko < 0) {
-            throw new IndexOutOfBoundsException("kapasiteetti2");//heitin vaan jotain :D
+            return;
         }
         lukujonoTaulukko = new int[kapasiteetti];
         alustaTaulukko(lukujonoTaulukko);
@@ -50,11 +50,12 @@ public class IntJoukko {
             lukujonoTaulukko[alkioidenLkm] = luku;
             alkioidenLkm++;
             if (alkioidenLkm % lukujonoTaulukko.length == 0) {
-                int[] taulukkoOld = new int[lukujonoTaulukko.length];
+            	lukujonoTaulukko = kopioiJaKasvataTaulukkoa(lukujonoTaulukko);
+                /*int[] taulukkoOld = new int[lukujonoTaulukko.length];
                 taulukkoOld = lukujonoTaulukko;
                 kopioiTaulukko(lukujonoTaulukko, taulukkoOld);
                 lukujonoTaulukko = new int[alkioidenLkm + kasvatuskoko];
-                kopioiTaulukko(taulukkoOld, lukujonoTaulukko);
+                kopioiTaulukko(taulukkoOld, lukujonoTaulukko);*/
             }
             return true;
         }
@@ -100,8 +101,12 @@ public class IntJoukko {
 
     }
     
-    private void kopioiJaKasvataTaulukkoa(int[] vanha, int[] uusi) {
-    	
+    private int[] kopioiJaKasvataTaulukkoa(int[] vanha) {
+    	int[] uusi = new int[alkioidenLkm + kasvatuskoko];
+    	for (int i = 0; i < vanha.length; i++) {
+            uusi[i] = vanha[i];
+        }
+    	return uusi;
     }
 
     public int mahtavuus() {

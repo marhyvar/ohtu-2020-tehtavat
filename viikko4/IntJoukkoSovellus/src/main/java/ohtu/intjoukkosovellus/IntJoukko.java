@@ -51,11 +51,6 @@ public class IntJoukko {
             alkioidenLkm++;
             if (alkioidenLkm % lukujonoTaulukko.length == 0) {
             	lukujonoTaulukko = kopioiJaKasvataTaulukkoa(lukujonoTaulukko);
-                /*int[] taulukkoOld = new int[lukujonoTaulukko.length];
-                taulukkoOld = lukujonoTaulukko;
-                kopioiTaulukko(lukujonoTaulukko, taulukkoOld);
-                lukujonoTaulukko = new int[alkioidenLkm + kasvatuskoko];
-                kopioiTaulukko(taulukkoOld, lukujonoTaulukko);*/
             }
             return true;
         }
@@ -94,13 +89,6 @@ public class IntJoukko {
         return false;
     }
 
-    private void kopioiTaulukko(int[] vanha, int[] uusi) {
-        for (int i = 0; i < vanha.length; i++) {
-            uusi[i] = vanha[i];
-        }
-
-    }
-    
     private int[] kopioiJaKasvataTaulukkoa(int[] vanha) {
     	int[] uusi = new int[alkioidenLkm + kasvatuskoko];
     	for (int i = 0; i < vanha.length; i++) {
@@ -145,47 +133,47 @@ public class IntJoukko {
         return taulu;
     }
    
+    static void lisaaJoukkoon(IntJoukko joukko, IntJoukko lisays) {
+    	int[] lisattava = lisays.toIntArray();
+        for (int i = 0; i < lisattava.length; i++) {
+            joukko.lisaa(lisattava[i]);
+        }
+    }
+    
+    static void poistaJoukosta(IntJoukko joukko, IntJoukko poisto) {
+    	int[] poistettava = poisto.toIntArray();
+        for (int i = 0; i < poistettava.length; i++) {
+            joukko.poista(poistettava[i]);
+        }
+    }
 
     public static IntJoukko yhdiste(IntJoukko a, IntJoukko b) {
-        IntJoukko x = new IntJoukko();
-        int[] aTaulu = a.toIntArray();
-        int[] bTaulu = b.toIntArray();
-        for (int i = 0; i < aTaulu.length; i++) {
-            x.lisaa(aTaulu[i]);
-        }
-        for (int i = 0; i < bTaulu.length; i++) {
-            x.lisaa(bTaulu[i]);
-        }
-        return x;
+        IntJoukko yhdiste = new IntJoukko();
+        lisaaJoukkoon(yhdiste, a);
+        lisaaJoukkoon(yhdiste, b);
+        return yhdiste;
     }
 
     public static IntJoukko leikkaus(IntJoukko a, IntJoukko b) {
-        IntJoukko y = new IntJoukko();
+        IntJoukko leikkaus = new IntJoukko();
         int[] aTaulu = a.toIntArray();
         int[] bTaulu = b.toIntArray();
         for (int i = 0; i < aTaulu.length; i++) {
             for (int j = 0; j < bTaulu.length; j++) {
                 if (aTaulu[i] == bTaulu[j]) {
-                    y.lisaa(bTaulu[j]);
+                    leikkaus.lisaa(bTaulu[j]);
                 }
             }
         }
-        return y;
+        return leikkaus;
 
     }
     
     public static IntJoukko erotus ( IntJoukko a, IntJoukko b) {
-        IntJoukko z = new IntJoukko();
-        int[] aTaulu = a.toIntArray();
-        int[] bTaulu = b.toIntArray();
-        for (int i = 0; i < aTaulu.length; i++) {
-            z.lisaa(aTaulu[i]);
-        }
-        for (int i = 0; i < bTaulu.length; i++) {
-            z.poista(bTaulu[i]);
-        }
- 
-        return z;
+        IntJoukko erotus = new IntJoukko();
+        lisaaJoukkoon(erotus, a);
+        poistaJoukosta(erotus, b);
+        return erotus;
     }
         
 }

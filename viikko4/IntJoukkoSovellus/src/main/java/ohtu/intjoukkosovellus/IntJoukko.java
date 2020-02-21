@@ -65,28 +65,39 @@ public class IntJoukko {
     	return false;
     }
 
-    public boolean poista(int luku) {
-        int kohta = -1;
-        int apu;
-        for (int i = 0; i < alkioidenLkm; i++) {
+    private int selvitaPoistonIndeksi(int luku) {
+    	int indeksi = -1;
+    	for (int i = 0; i < alkioidenLkm; i++) {
             if (luku == lukujonoTaulukko[i]) {
-                kohta = i; //siis luku löytyy tuosta kohdasta :D
-                lukujonoTaulukko[kohta] = 0;
+                indeksi = i; //siis luku löytyy tuosta kohdasta :D
                 break;
             }
         }
-        if (kohta != -1) {
-            for (int j = kohta; j < alkioidenLkm - 1; j++) {
-                apu = lukujonoTaulukko[j];
-                lukujonoTaulukko[j] = lukujonoTaulukko[j + 1];
-                lukujonoTaulukko[j + 1] = apu;
-            }
-            alkioidenLkm--;
-            return true;
-        }
+    	return indeksi;
+    }
+    
+    private int[] poistaLukuTaulukosta(int[] taulukko, int indeksi) {
+    	int[] uusiPienempiTaulukko = new int[taulukko.length - 1]; 
+    	for (int i = 0, j = 0; i < taulukko.length; i++) { 
+            if (i == indeksi) { 
+                continue; 
+            } 
+            uusiPienempiTaulukko[j++] = taulukko[i]; 
+        } 
+    	return uusiPienempiTaulukko;
+    }
+    
+    public boolean poista(int luku) {
+    	int poistettavaIndeksi;
+    	poistettavaIndeksi = selvitaPoistonIndeksi(luku);
 
-
-        return false;
+    	if (poistettavaIndeksi != -1) { // l�ytyy taulukosta
+    		lukujonoTaulukko = poistaLukuTaulukosta(lukujonoTaulukko, poistettavaIndeksi);
+    		alkioidenLkm--;
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 
     private int[] kopioiJaKasvataTaulukkoa(int[] vanha) {

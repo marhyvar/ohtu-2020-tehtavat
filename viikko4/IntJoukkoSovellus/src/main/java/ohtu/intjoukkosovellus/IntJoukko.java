@@ -106,6 +106,17 @@ public class IntJoukko {
             taulukko[i] = 0;
         }
     }
+    
+    private String lukujonoTulostustaVarten() {
+    	String lukujonoTeksti = "{";
+        for (int i = 0; i < alkioidenLkm-1; i++) {
+            lukujonoTeksti += lukujonoTaulukko[i];
+            lukujonoTeksti += ", ";
+        }
+        lukujonoTeksti += lukujonoTaulukko[alkioidenLkm - 1];
+        lukujonoTeksti += "}";
+        return lukujonoTeksti;
+    }
 
     @Override
     public String toString() {
@@ -114,14 +125,7 @@ public class IntJoukko {
         } else if (alkioidenLkm == 1) {
             return "{" + lukujonoTaulukko[0] + "}";
         } else {
-            String tuotos = "{";
-            for (int i = 0; i < alkioidenLkm - 1; i++) {
-                tuotos += lukujonoTaulukko[i];
-                tuotos += ", ";
-            }
-            tuotos += lukujonoTaulukko[alkioidenLkm - 1];
-            tuotos += "}";
-            return tuotos;
+            return lukujonoTulostustaVarten();
         }
     }
 

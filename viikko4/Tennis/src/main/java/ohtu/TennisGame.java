@@ -49,20 +49,20 @@ public class TennisGame {
 	
 	private String getTennisTermFor(int score) {
 		String term = "";
-        switch(score) {
-            case 0:
-                term ="Love";
-                break;
-            case 1:
-                term ="Fifteen";
-                break;
-            case 2:
-                term ="Thirty";
-                break;
-            case 3:
-                term ="Forty";
-                break;
-        }
+		switch(score) {
+			case 0:
+				term ="Love";
+				break;
+			case 1:
+				term ="Fifteen";
+				break;
+			case 2:
+				term ="Thirty";
+				break;
+			case 3:
+				term ="Forty";
+				break;
+		}
 		return term;
 	}
 	

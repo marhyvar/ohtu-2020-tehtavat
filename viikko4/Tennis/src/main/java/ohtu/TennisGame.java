@@ -7,16 +7,19 @@ public class TennisGame {
     private String player1Name;
     private String player2Name;
 
-    public TennisGame(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+    public TennisGame(String name1, String name2) {
+        this.player1Name = name1;
+        this.player2Name = name2;
     }
 
-    public void wonPoint(String playerName) {
-        if (playerName == "player1")
+    public void wonPoint(String name) {
+        if (name.equals(player1Name)) {
             m_score1 += 1;
-        else
+        } else if (name.equals(player2Name)) {
             m_score2 += 1;
+        }
+        else
+            return;
     }
 
     public String getScore() {

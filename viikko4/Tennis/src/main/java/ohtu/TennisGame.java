@@ -18,8 +18,9 @@ public class TennisGame {
         } else if (name.equals(player2Name)) {
             m_score2 += 1;
         }
-        else
+        else {
             return;
+        }
     }
 
     public String getScore() {

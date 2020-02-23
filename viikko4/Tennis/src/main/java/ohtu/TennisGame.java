@@ -21,31 +21,17 @@ public class TennisGame {
             score1 +=1;
         } else if (name.equals(player2)) {
         	score2 +=1;
-        }
-        else {
+        } else {
             return;
         }
     }
 	
 	private void getGameResultWhenEqualPoints() {
-		switch (score1) {
-            case 0:
-                    gameResult = "Love-All";
-                break;
-            case 1:
-                    gameResult = "Fifteen-All";
-                break;
-            case 2:
-                    gameResult = "Thirty-All";
-                break;
-            case 3:
-                    gameResult = "Forty-All";
-                break;
-            default:
-                    gameResult = "Deuce";
-                break;
-            
-        }
+		if (score1 <=3) {
+			gameResult = getTennisTermFor(score1) + "-All";
+		} else {
+			gameResult = "Deuce";
+		}
 	}
 	
 	private void getWinOrAdvantage() {
@@ -61,30 +47,27 @@ public class TennisGame {
         }
 	}
 	
+	private String getTennisTermFor(int score) {
+		String term = "";
+        switch(score) {
+            case 0:
+                term ="Love";
+                break;
+            case 1:
+                term ="Fifteen";
+                break;
+            case 2:
+                term ="Thirty";
+                break;
+            case 3:
+                term ="Forty";
+                break;
+        }
+		return term;
+	}
+	
 	private void getGameResult() {
-        int tempScore=0;
-        for (int i=1; i<3; i++) {
-            if (i==1) {
-            	tempScore = score1;
-            } else { 
-            	gameResult+="-"; tempScore = score2;
-            }
-            switch(tempScore)
-            {
-                case 0:
-                    gameResult+="Love";
-                    break;
-                case 1:
-                    gameResult+="Fifteen";
-                    break;
-                case 2:
-                    gameResult+="Thirty";
-                    break;
-                case 3:
-                    gameResult+="Forty";
-                    break;
-            }
-        }		
+		gameResult = getTennisTermFor(score1) + "-" + getTennisTermFor(score2);		
 	}
 	
     public String getScore() {

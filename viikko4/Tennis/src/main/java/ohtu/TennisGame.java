@@ -2,83 +2,110 @@ package ohtu;
 
 public class TennisGame {
     
-    private int m_score1 = 0;
-    private int m_score2 = 0;
-    private String player1Name;
-    private String player2Name;
+    private int score1;
+    private int score2;
+    private String player1;
+    private String player2;
+    private String gameResult;
+
 
     public TennisGame(String name1, String name2) {
-        this.player1Name = name1;
-        this.player2Name = name2;
+    	this.score1 = 0;
+    	this.score2 = 0;
+        this.player1 = name1;
+        this.player2 = name2;
     }
-
-    public void wonPoint(String name) {
-        if (name.equals(player1Name)) {
-            m_score1 += 1;
-        } else if (name.equals(player2Name)) {
-            m_score2 += 1;
+    
+	public void wonPoint(String name) {
+        if (name.equals(player1)) {
+            score1 +=1;
+        } else if (name.equals(player2)) {
+        	score2 +=1;
         }
         else {
             return;
         }
     }
-
-    public String getScore() {
-        String score = "";
+	
+	private void getGameResultWhenEqualPoints() {
+		switch (score1) {
+            case 0:
+                    gameResult = "Love-All";
+                break;
+            case 1:
+                    gameResult = "Fifteen-All";
+                break;
+            case 2:
+                    gameResult = "Thirty-All";
+                break;
+            case 3:
+                    gameResult = "Forty-All";
+                break;
+            default:
+                    gameResult = "Deuce";
+                break;
+            
+        }
+	}
+	
+	private void getWinOrAdvantage() {
+        int playerScoreDifference = score1-score2;
+        if (playerScoreDifference==1) {
+        	gameResult ="Advantage player1";
+        } else if (playerScoreDifference ==-1) {
+        	gameResult ="Advantage player2";
+        } else if (playerScoreDifference>=2) {
+        	gameResult = "Win for player1";
+        } else {
+        	gameResult ="Win for player2";
+        }
+	}
+	
+	private void getGameResult() {
         int tempScore=0;
-        if (m_score1==m_score2)
-        {
-            switch (m_score1)
+        for (int i=1; i<3; i++) {
+            if (i==1) {
+            	tempScore = score1;
+            } else { 
+            	gameResult+="-"; tempScore = score2;
+            }
+            switch(tempScore)
             {
                 case 0:
-                        score = "Love-All";
+                    gameResult+="Love";
                     break;
                 case 1:
-                        score = "Fifteen-All";
+                    gameResult+="Fifteen";
                     break;
                 case 2:
-                        score = "Thirty-All";
+                    gameResult+="Thirty";
                     break;
                 case 3:
-                        score = "Forty-All";
+                    gameResult+="Forty";
                     break;
-                default:
-                        score = "Deuce";
-                    break;
-                
             }
+        }		
+	}
+	
+    public String getScore() {
+        gameResult = ""; 
+        boolean equalPoints = false;
+        boolean winOrAdvantage = false;
+        
+        if (score1==score2) {
+        	equalPoints = true;
+        }            
+        if (score1>=4 || score2>=4) {
+        	winOrAdvantage = true;
         }
-        else if (m_score1>=4 || m_score2>=4)
-        {
-            int minusResult = m_score1-m_score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
+        
+        if (equalPoints) {
+            getGameResultWhenEqualPoints();
+        } else if (winOrAdvantage) {
+        	getWinOrAdvantage();
+        } else {
+        	getGameResult();
         }
-        else
-        {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
-        }
-        return score;
+        return gameResult;
     }
 }

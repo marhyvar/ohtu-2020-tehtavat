@@ -27,6 +27,16 @@ public class Summa extends Komento {
         } catch (Exception e) {
         }
         sovellus.plus(arvo);
+        int laskunTulos = sovellus.tulos();       
+        syotekentta.setText("");
+        tuloskentta.setText("" + laskunTulos);
+        
+        if ( laskunTulos==0) {
+            nollaa.disableProperty().set(true);
+        } else {
+            nollaa.disableProperty().set(false);
+        }
+        undo.disableProperty().set(false);
 	}
 
 	@Override

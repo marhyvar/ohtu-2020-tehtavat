@@ -23,6 +23,8 @@ public abstract class Komento {
 		int laskunTulos = sovellus.tulos();       
         syotekentta.setText("");
         tuloskentta.setText("" + laskunTulos);
+        System.out.println("Tuloskentassa tulos: " + tuloskentta.getText());
+        System.out.println("Syotekentta pitäisi olla tyhja: " + syotekentta.getText());
         
         if ( laskunTulos==0) {
             nollaa.disableProperty().set(true);

@@ -7,7 +7,7 @@ public class Erotus extends Komento {
 
 	
 	public Erotus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
-		super(syotekentta, syotekentta, undo, undo, sovellus);
+		super(tuloskentta, syotekentta, nollaa, undo, sovellus);
 	}
 
 	@Override

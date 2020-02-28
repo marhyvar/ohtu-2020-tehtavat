@@ -20,9 +20,4 @@ public class Summa extends Komento {
         kasitteleLasku();
 	}
 
-	@Override
-	public void peru() {
-		// TODO Auto-generated method stub
-		
-	}
 }

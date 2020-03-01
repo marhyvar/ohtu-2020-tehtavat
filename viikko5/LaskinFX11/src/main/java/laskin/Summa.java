@@ -14,13 +14,13 @@ public class Summa extends Komento {
 	@Override
 	public void suorita() {
 		int arvo = 0;		 
-        try {
-            arvo = Integer.parseInt(syotekentta.getText());
-        } catch (Exception e) {
-        }
-        sovellus.plus(arvo);
-        edellinen = arvo;
-        kasitteleLasku();
+		try {
+		    arvo = Integer.parseInt(syotekentta.getText());
+		} catch (Exception e) {
+		}
+		sovellus.plus(arvo);
+		edellinen = arvo;
+		kasitteleLasku();
 	}
 
 	@Override

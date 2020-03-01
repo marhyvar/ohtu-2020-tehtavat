@@ -2,7 +2,7 @@
 
 ## Start, Stop, Continue, More of, Less of Wheel
 
-Vetäjä piirtää ympyrän posterille, joka jaetaan viiteen eri sektoriin: aloita, lopeta, jatka, enemmän ja vähemmän. Tiimin jäseniltä kysytään kommentteja, jotka sijoitetaan ympyrään kategorian mukaisesti (mitä pitäisi tehdä enemmän, mitä vähemmän jne.). Pyörään sijoitettujen kommenttien perusteella päätetään jatkotoimenpiteistä seuraavaa iteraatiota varten. Isommissa ryhmissä voidaan käyttää useampia pyöriä eri aihepiireille. Retrospektiivin kesto vaihtelee 10 - 25 minuutin välillä riippuen tiimin koosta.
+Posterille piirretään ympyrä, joka jaetaan viiteen eri sektoriin: aloita, lopeta, jatka, enemmän ja vähemmän. Tiimin jäseniltä kysytään kommentteja, jotka sijoitetaan ympyrään kategorian mukaisesti (mitä pitäisi tehdä enemmän, mitä vähemmän jne.). Pyörään sijoitettujen kommenttien perusteella päätetään jatkotoimenpiteistä seuraavaa iteraatiota varten. Isommissa ryhmissä voidaan käyttää useampia pyöriä eri aihepiireille. Retrospektiivin kesto vaihtelee 10 - 25 minuutin välillä riippuen tiimin koosta.
 
 ## Glad, Sad, Mad
 

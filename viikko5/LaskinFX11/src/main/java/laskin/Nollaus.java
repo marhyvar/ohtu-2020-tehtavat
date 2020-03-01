@@ -5,19 +5,24 @@ import javafx.scene.control.TextField;
 
 public class Nollaus extends Komento {
 	
+	int edellinen;
+	
 	public Nollaus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
 		super(syotekentta, syotekentta, nollaa, undo, sovellus);
 	}
 
 	@Override
 	public void suorita() {
+		edellinen = sovellus.tulos();
         sovellus.nollaa();
         kasitteleLasku();
 	}
 
 	@Override
 	public void peru() {
-		// TODO Auto-generated method stub
-		
+		sovellus.plus(edellinen);
+		syotekentta.setText("");
+        tuloskentta.setText("" + sovellus.tulos());
+		undo.disableProperty().set(true);		
 	}
 }

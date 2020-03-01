@@ -8,7 +8,7 @@ public class Nollaus extends Komento {
 	int edellinen;
 	
 	public Nollaus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
-		super(syotekentta, syotekentta, nollaa, undo, sovellus);
+		super(tuloskentta, syotekentta, nollaa, undo, sovellus);
 	}
 
 	@Override

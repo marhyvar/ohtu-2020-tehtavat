@@ -6,10 +6,10 @@ import javafx.scene.control.TextField;
 public abstract class Komento {
 	
 	protected TextField tuloskentta; 
-    protected TextField syotekentta; 
-    protected Sovelluslogiikka sovellus;
-    protected Button nollaa;
-    protected Button undo;
+	protected TextField syotekentta; 
+	protected Sovelluslogiikka sovellus;
+	protected Button nollaa;
+	protected Button undo;
 	
 	public Komento(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
 		this.tuloskentta = tuloskentta;
@@ -21,8 +21,8 @@ public abstract class Komento {
 	
 	public void kasitteleLasku() {
 		int laskunTulos = sovellus.tulos();       
-        syotekentta.setText("");
-        tuloskentta.setText("" + laskunTulos);
+		syotekentta.setText("");
+		tuloskentta.setText("" + laskunTulos);
         
         if ( laskunTulos==0) {
             nollaa.disableProperty().set(true);

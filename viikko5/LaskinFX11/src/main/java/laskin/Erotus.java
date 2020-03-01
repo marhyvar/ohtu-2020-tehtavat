@@ -14,20 +14,20 @@ public class Erotus extends Komento {
 	@Override
 	public void suorita() {
 		int arvo = 0;		 
-        try {
-            arvo = Integer.parseInt(syotekentta.getText());
-        } catch (Exception e) {
-        }
-        sovellus.miinus(arvo);
-        edellinen = arvo;
-        kasitteleLasku();
+		try {
+		    arvo = Integer.parseInt(syotekentta.getText());
+		} catch (Exception e) {
+		}
+		sovellus.miinus(arvo);
+		edellinen = arvo;
+		kasitteleLasku();
 	}
 
 	@Override
 	public void peru() {
 		sovellus.plus(edellinen);
 		syotekentta.setText("");
-        tuloskentta.setText("" + sovellus.tulos());
+		tuloskentta.setText("" + sovellus.tulos());
 		undo.disableProperty().set(true);		
 	}
 }

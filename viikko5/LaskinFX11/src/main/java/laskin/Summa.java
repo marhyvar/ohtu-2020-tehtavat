@@ -27,7 +27,7 @@ public class Summa extends Komento {
 	public void peru() {
 		sovellus.miinus(edellinen);
 		syotekentta.setText("");
-        tuloskentta.setText("" + sovellus.tulos());
+		tuloskentta.setText("" + sovellus.tulos());
 		undo.disableProperty().set(true);
 	}
 }

@@ -14,15 +14,15 @@ public class Nollaus extends Komento {
 	@Override
 	public void suorita() {
 		edellinen = sovellus.tulos();
-        sovellus.nollaa();
-        kasitteleLasku();
+		sovellus.nollaa();
+		kasitteleLasku();
 	}
 
 	@Override
 	public void peru() {
 		sovellus.plus(edellinen);
 		syotekentta.setText("");
-        tuloskentta.setText("" + sovellus.tulos());
+		tuloskentta.setText("" + sovellus.tulos());
 		undo.disableProperty().set(true);		
 	}
 }

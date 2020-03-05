@@ -11,7 +11,5 @@ gradle.properties
 .settings/
 .classpath
 .project
-bin/main/.gitignore
-bin/test/.gitignore
 
 bin/

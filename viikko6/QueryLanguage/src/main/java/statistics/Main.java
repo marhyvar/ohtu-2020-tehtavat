@@ -16,11 +16,21 @@ public class Main {
                              new PlaysIn("PHI")
         );*/
         
-        Matcher m = new And( 
+        Matcher y = new And( 
         	    new Not( new HasAtLeast(1, "goals") ), 
         	    new PlaysIn("NYR")
         	);
         
+        Matcher m = new And( 
+        	    new HasFewerThan(1, "goals"), 
+        	    new PlaysIn("NYR")
+        );
+
+        
+        for (Player player : stats.matches(y)) {
+            System.out.println(player);
+        }
+        System.out.println("Seuraava sama tulos: ");
         for (Player player : stats.matches(m)) {
             System.out.println(player);
         }

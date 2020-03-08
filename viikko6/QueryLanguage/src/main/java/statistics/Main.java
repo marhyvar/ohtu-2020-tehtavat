@@ -24,7 +24,7 @@ public class Main {
         Matcher m = new And( 
         	    new HasFewerThan(1, "goals"), 
         	    new PlaysIn("NYR")
-        );*/
+        );
 		Matcher m = new Or( new HasAtLeast(20, "goals"),
 			new HasAtLeast(20, "assists")
 		);
@@ -44,6 +44,13 @@ public class Main {
         System.out.println("Seuraava tulos: ");
         for (Player player : stats.matches(y)) {
             System.out.println(player);
+        }*/
+        QueryBuilder query = new QueryBuilder();
+        
+        Matcher m = ((QueryBuilder) query.playsIn("NYR")).build();
+     
+        for (Player player : stats.matches(m)) {
+            System.out.println( player );
         }
     }
 }

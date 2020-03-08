@@ -18,4 +18,5 @@ public class Not implements Matcher {
         	return false;
         }
 	}
+
 }

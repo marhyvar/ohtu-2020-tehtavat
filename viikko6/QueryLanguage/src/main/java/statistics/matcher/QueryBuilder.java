@@ -4,6 +4,7 @@ import statistics.Player;
 
 public class QueryBuilder implements Matcher{
 	Matcher matcher;
+	private Matcher[] matchers;
 	
 	public QueryBuilder() {
 		matcher = new All();
@@ -15,11 +16,13 @@ public class QueryBuilder implements Matcher{
 	
 	public Matcher playsIn(String team) {
 		this.matcher = new PlaysIn(team);
+		matchers[matchers.length] = this.matcher;
 		return this;
 	}
 	
 	public Matcher hasAtLeast(int value, String category) {
 		this.matcher = new HasAtLeast(value, category);
+		matchers[matchers.length] = this.matcher;
 		return this;
 	}
 	
@@ -30,13 +33,19 @@ public class QueryBuilder implements Matcher{
 
 	public Matcher hasFewerThan(int value, String category) {
 		this.matcher = new HasFewerThan(value, category);
+		matchers[matchers.length] = this.matcher;
 		return this;
 	}
 
 	@Override
 	public boolean matches(Player p) {
-		// TODO Auto-generated method stub
-		return false;
+		for (Matcher matcher : matchers) {
+            if (!matcher.matches(p)) {
+                return false;
+            }
+        }
+
+        return true;
 	}
 
 }

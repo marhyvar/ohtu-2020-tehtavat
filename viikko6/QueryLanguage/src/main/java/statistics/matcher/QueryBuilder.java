@@ -1,51 +1,38 @@
 package statistics.matcher;
 
-import statistics.Player;
-
-public class QueryBuilder implements Matcher{
+public class QueryBuilder {
 	Matcher matcher;
 	private Matcher[] matchers;
 	
 	public QueryBuilder() {
-		matcher = new All();
+		matchers[matchers.length] = new All();
 	}
 
 	public Matcher build() {
-		return matcher;
+		return new And(matchers);
 	}
 	
-	public Matcher playsIn(String team) {
+	public QueryBuilder playsIn(String team) {
 		this.matcher = new PlaysIn(team);
 		matchers[matchers.length] = this.matcher;
 		return this;
 	}
 	
-	public Matcher hasAtLeast(int value, String category) {
+	public QueryBuilder hasAtLeast(int value, String category) {
 		this.matcher = new HasAtLeast(value, category);
 		matchers[matchers.length] = this.matcher;
 		return this;
 	}
 	
-	public Matcher Not(Matcher matcher) {
+	public QueryBuilder Not(Matcher matcher) {
 		this.matcher = new Not(matcher);
 		return this;
 	}
 
-	public Matcher hasFewerThan(int value, String category) {
+	public QueryBuilder hasFewerThan(int value, String category) {
 		this.matcher = new HasFewerThan(value, category);
 		matchers[matchers.length] = this.matcher;
 		return this;
-	}
-
-	@Override
-	public boolean matches(Player p) {
-		for (Matcher matcher : matchers) {
-            if (!matcher.matches(p)) {
-                return false;
-            }
-        }
-
-        return true;
 	}
 
 }

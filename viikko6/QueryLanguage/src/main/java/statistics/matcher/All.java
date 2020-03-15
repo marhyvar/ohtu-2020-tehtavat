@@ -3,30 +3,15 @@ package statistics.matcher;
 import statistics.Player;
 
 public class All implements Matcher {
+	boolean condition;
 	
-	private Matcher[] matchers;
-	
-	public All(Matcher...matchers) {
-		this.matchers = matchers;
+	public All() {
+		condition = true;
 	}
 	
 	@Override
 	public boolean matches(Player p) {
-		int times = 0;
-		int matchedPlayers = 0;
-		for (Matcher matcher : matchers) {
-            if (matcher.matches(p)) {
-                times++;
-                matchedPlayers++;
-            } else {
-            	times++;
-            }
-        }
-		if (times == matchedPlayers) {
-			return true;
-		} else {
-			return false;
-		}
+		return condition;
 	}
 
 }

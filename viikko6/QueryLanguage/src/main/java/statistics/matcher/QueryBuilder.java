@@ -2,6 +2,7 @@ package statistics.matcher;
 
 public class QueryBuilder {
 	Matcher matcher;
+	private Matcher[] matchers;
 	
 	public QueryBuilder() {
 		matcher = new All();
@@ -28,6 +29,11 @@ public class QueryBuilder {
 
 	public QueryBuilder hasFewerThan(int value, String category) {
 		this.matcher = new And(matcher, new HasFewerThan(value, category));
+		return this;
+	}
+	
+	public QueryBuilder oneOf(Matcher...matchers) {
+		this.matcher = new Or(matcher, new Or(matchers));
 		return this;
 	}
 

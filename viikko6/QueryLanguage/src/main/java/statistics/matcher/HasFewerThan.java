@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 
 public class HasFewerThan implements Matcher {
 
-	private int value;
-	private String fieldName;
+    private int value;
+    private String fieldName;
 
     public HasFewerThan(int value, String category) {
         this.value = value;

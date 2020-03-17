@@ -3,9 +3,28 @@ package ohtu.kivipaperisakset;
 public class Peli {
     
     private IO io;
-
-	public Peli(IO io) {
+    private PeliMoodi pelimoodi;
+    
+    
+    public Peli(IO io) {
+    	this.io = io;
+    }
+    
+	public Peli(IO io, PeliMoodi pelimoodi) {
 		this.io = io;
+		this.pelimoodi = pelimoodi;
+	}
+	
+	public static Peli luoKaksinPeli(IO io, PeliMoodi pelimoodi) {
+		return new Peli(io, new KPSPelaajaVsPelaaja());
+	}
+	
+	public static Peli luoHelppoYksinpeli(IO io, PeliMoodi pelimoodi) {
+		return new Peli(io, new KPSTekoaly());
+	}
+	
+	public static Peli luoVaikeaYksinpeli(IO io, PeliMoodi pelimoodi) {
+		return new Peli(io, new KPSParempiTekoaly());
 	}
     
 	public void aloita() {

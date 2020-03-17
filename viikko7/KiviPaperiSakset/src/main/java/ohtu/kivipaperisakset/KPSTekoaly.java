@@ -2,7 +2,7 @@ package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
 
-public class KPSTekoaly {
+public class KPSTekoaly implements PeliMoodi {
 
     private static final Scanner scanner = new Scanner(System.in);
 

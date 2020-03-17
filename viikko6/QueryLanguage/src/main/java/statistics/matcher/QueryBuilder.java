@@ -2,7 +2,6 @@ package statistics.matcher;
 
 public class QueryBuilder {
 	Matcher matcher;
-	private Matcher[] matchers;
 	
 	public QueryBuilder() {
 		matcher = new All();

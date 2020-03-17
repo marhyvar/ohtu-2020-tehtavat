@@ -6,17 +6,17 @@ public class Not implements Matcher {
 	
 	private Matcher matcher;
 	
-    public Not(Matcher matcher) {
-        this.matcher = matcher;
+	public Not(Matcher matcher) {
+		this.matcher = matcher;
     }
 	
 	@Override
 	public boolean matches(Player p) {
 		if (!matcher.matches(p)) {
-            return true;
-        } else {
-        	return false;
-        }
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

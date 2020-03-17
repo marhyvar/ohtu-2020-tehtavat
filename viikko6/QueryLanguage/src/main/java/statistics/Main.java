@@ -36,21 +36,19 @@ public class Main {
 				new PlaysIn("NYI"),
 				new PlaysIn("NJD")
 			)
-		);
+		);*/
         
-        for (Player player : stats.matches(m)) {
-            System.out.println(player);
-        }
-        System.out.println("Seuraava tulos: ");
-        for (Player player : stats.matches(y)) {
-            System.out.println(player);
-        }*/
         QueryBuilder query = new QueryBuilder();
-        //Matcher y = query.build();
-        //Matcher x = query.playsIn("NYR").build();
-        Matcher m = query.playsIn("NYR")
-                .hasAtLeast(5, "goals")
-                .hasFewerThan(10, "goals").build();
+        QueryBuilder query2 = new QueryBuilder();
+
+        Matcher m1 = query.playsIn("PHI")
+        		.hasAtLeast(10, "assists")
+        		.hasFewerThan(8, "goals").build();
+
+        Matcher m2 = query2.playsIn("EDM")
+        		.hasAtLeast(20, "points").build();
+
+        Matcher m = query.oneOf(m1, m2).build();
      
         for (Player player : stats.matches(m)) {
             System.out.println( player );

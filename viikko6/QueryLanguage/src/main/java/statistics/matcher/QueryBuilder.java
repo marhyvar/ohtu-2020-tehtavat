@@ -30,5 +30,10 @@ public class QueryBuilder {
 		this.matcher = new And(matcher, new HasFewerThan(value, category));
 		return this;
 	}
+	
+	public QueryBuilder oneOf(Matcher...matchers) {
+		this.matcher = new Or(matcher, new Or(matchers));
+		return this;
+	}
 
 }

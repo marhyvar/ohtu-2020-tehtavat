@@ -4,8 +4,12 @@ import java.util.Scanner;
 
 // Kivi-Paperi-Sakset, jossa voidaan valita pelataanko vastustajaa
 // vastaan vai ei
-public class KPSParempiTekoaly implements PeliMoodi {
-
+public class KPSParempiTekoaly extends PeliMoodi {
+	
+	public KPSParempiTekoaly(IO io) {
+		super(io);
+	}
+	
     private static final Scanner scanner = new Scanner(System.in);
 
     public void pelaa() {

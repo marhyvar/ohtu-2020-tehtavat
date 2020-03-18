@@ -1,5 +1,9 @@
 package ohtu.kivipaperisakset;
 
-public interface PeliMoodi {
-	void pelaa();
+public abstract class PeliMoodi {
+	protected IO io;
+	public PeliMoodi(IO io) {
+		this.io = io;
+	}
+	protected abstract void pelaa();
 }

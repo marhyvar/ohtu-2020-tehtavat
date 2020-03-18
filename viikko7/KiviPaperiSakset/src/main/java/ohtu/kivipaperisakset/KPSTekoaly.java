@@ -2,10 +2,14 @@ package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
 
-public class KPSTekoaly implements PeliMoodi {
+public class KPSTekoaly extends PeliMoodi {
 
     private static final Scanner scanner = new Scanner(System.in);
-
+    
+    public KPSTekoaly(IO io) {
+		super(io);
+	}
+    
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
         Tekoaly tekoaly = new Tekoaly();

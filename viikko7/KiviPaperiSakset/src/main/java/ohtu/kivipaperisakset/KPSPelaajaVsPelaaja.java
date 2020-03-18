@@ -2,8 +2,12 @@ package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
 
-public class KPSPelaajaVsPelaaja implements PeliMoodi {
+public class KPSPelaajaVsPelaaja extends PeliMoodi {
 
+	public KPSPelaajaVsPelaaja(IO io) {
+		super(io);
+	}
+	
     private static final Scanner scanner = new Scanner(System.in);
 
     public void pelaa() {

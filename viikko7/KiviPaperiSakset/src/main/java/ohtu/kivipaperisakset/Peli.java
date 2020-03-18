@@ -10,21 +10,20 @@ public class Peli {
     	this.io = io;
     }
     
-	public Peli(IO io, PeliMoodi pelimoodi) {
-		this.io = io;
+	public Peli(PeliMoodi pelimoodi) {
 		this.pelimoodi = pelimoodi;
 	}
 	
 	public static Peli luoKaksinPeli(IO io, PeliMoodi pelimoodi) {
-		return new Peli(io, new KPSPelaajaVsPelaaja());
+		return new Peli(new KPSPelaajaVsPelaaja(io));
 	}
 	
 	public static Peli luoHelppoYksinpeli(IO io, PeliMoodi pelimoodi) {
-		return new Peli(io, new KPSTekoaly());
+		return new Peli(new KPSTekoaly(io));
 	}
 	
 	public static Peli luoVaikeaYksinpeli(IO io, PeliMoodi pelimoodi) {
-		return new Peli(io, new KPSParempiTekoaly());
+		return new Peli(new KPSParempiTekoaly(io));
 	}
     
 	public void aloita() {

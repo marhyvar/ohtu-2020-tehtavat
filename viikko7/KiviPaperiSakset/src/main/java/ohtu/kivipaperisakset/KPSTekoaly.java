@@ -1,47 +1,37 @@
 package ohtu.kivipaperisakset;
 
-import java.util.Scanner;
-
-public class KPSTekoaly extends PeliMoodi {
-
-    private static final Scanner scanner = new Scanner(System.in);
+public class KPSTekoaly extends Peli {
     
-    public KPSTekoaly(IO io) {
-		super(io);
+    public KPSTekoaly(IO io, Tuomari tuomari) {
+		super(io, tuomari);
 	}
     
     public void pelaa() {
-        Tuomari tuomari = new Tuomari();
         Tekoaly tekoaly = new Tekoaly();
 
-        System.out.print("Ensimmäisen pelaajan siirto: ");
-        String ekanSiirto = scanner.nextLine();
+        io.print("Ensimmäisen pelaajan siirto: ");
+        String ekanSiirto = io.syote();
         String tokanSiirto;
 
         tokanSiirto = tekoaly.annaSiirto();
-        System.out.println("Tietokone valitsi: " + tokanSiirto);
+        io.print("Tietokone valitsi: " + tokanSiirto);
 
 
         while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
             tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
-            System.out.println(tuomari);
-            System.out.println();
+            io.print(tuomari.toString());
+            io.print("\n");
 
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = scanner.nextLine();
+            io.print("Ensimmäisen pelaajan siirto: ");
+            ekanSiirto = io.syote();
 
             tokanSiirto = tekoaly.annaSiirto();
-            System.out.println("Tietokone valitsi: " + tokanSiirto);
+            io.print("Tietokone valitsi: " + tokanSiirto);
             tekoaly.asetaSiirto(ekanSiirto);
 
         }
 
-        System.out.println();
-        System.out.println("Kiitos!");
-        System.out.println(tuomari);
+        lopetus();
     }
 
-    private static boolean onkoOkSiirto(String siirto) {
-        return "k".equals(siirto) || "p".equals(siirto) || "s".equals(siirto);
-    }
 }

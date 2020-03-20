@@ -7,7 +7,7 @@ public class KPSTekoaly extends Peli {
 	}
     
     public void pelaa() {
-        Tekoaly tekoaly = new Tekoaly();
+        TekoalyYksinkertainen tekoaly = new TekoalyYksinkertainen();
 
         io.print("Ensimmäisen pelaajan siirto: ");
         String ekanSiirto = io.syote();

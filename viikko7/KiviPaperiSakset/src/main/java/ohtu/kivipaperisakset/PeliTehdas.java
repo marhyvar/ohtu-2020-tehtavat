@@ -12,12 +12,8 @@ public class PeliTehdas {
 		return  new KPSPelaajaVsPelaaja(io, tuomari);
 	}
 	
-	public static Peli luoHelppoYksinpeli(IO io, Tuomari tuomari) {
-		return new KPSTekoaly(io, tuomari);
-	}
-	
-	public static Peli luoVaikeaYksinpeli(IO io, Tuomari tuomari) {
-		return new KPSParempiTekoaly(io, tuomari);
+	public static Peli luoPeliTekoalyaVastaan(IO io, Tuomari tuomari, TekoAly tekoaly) {
+		return new KPSPelaajaVsTekoaly(io, tuomari, tekoaly);
 	}
     
 	public void aloita() {
@@ -35,11 +31,11 @@ public class PeliTehdas {
                 kaksinpeli.pelaa();
             } else if (vastaus.endsWith("b")) {
                 io.print("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-                Peli yksinpeli = PeliTehdas.luoHelppoYksinpeli(io, new TuomariImpl());
+                Peli yksinpeli = PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyYksinkertainen());
                 yksinpeli.pelaa();
             } else if (vastaus.endsWith("c")) {
                 io.print("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-                Peli pahaYksinpeli = PeliTehdas.luoVaikeaYksinpeli(io, new TuomariImpl());
+                Peli pahaYksinpeli = PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyParannettu(20));
                 pahaYksinpeli.pelaa();
             } else {
                 break;

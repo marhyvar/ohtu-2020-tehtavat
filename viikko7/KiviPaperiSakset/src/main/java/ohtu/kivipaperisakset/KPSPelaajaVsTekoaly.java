@@ -2,14 +2,14 @@ package ohtu.kivipaperisakset;
 
 // Kivi-Paperi-Sakset, jossa voidaan valita pelataanko vastustajaa
 // vastaan vai ei
-public class KPSParempiTekoaly extends Peli {
+public class KPSPelaajaVsTekoaly extends Peli {
 	
-	public KPSParempiTekoaly(IO io, Tuomari tuomari) {
-		super(io, tuomari);
+	public KPSPelaajaVsTekoaly(IO io, Tuomari tuomari, TekoAly tekoaly) {
+		super(io, tuomari, tekoaly);
 	}
 
     public void pelaa() {
-        TekoalyParannettu tekoaly = new TekoalyParannettu(20);
+        TekoAly tekoaly = new TekoalyParannettu(20);
 
         io.print("Ensimmäisen pelaajan siirto: ");
         String ekanSiirto = io.syote();

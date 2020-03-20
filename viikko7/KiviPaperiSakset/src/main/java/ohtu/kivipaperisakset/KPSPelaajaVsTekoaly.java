@@ -12,16 +12,13 @@ public class KPSPelaajaVsTekoaly extends Peli {
     	String ekanSiirto, tokanSiirto;
         
          do {
-        	io.print("Ensimm√§isen pelaajan siirto: ");
-            ekanSiirto = io.syote();
+            ekanSiirto = pelaajanSiirto("Ensimm‰isen ");
             if (!onkoOkSiirto(ekanSiirto)) {
 	        	break;
 	        }
             tokanSiirto = tekoaly.annaSiirto();
             io.print("Tietokone valitsi: " + tokanSiirto);
-            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
-            System.out.println(tuomari);
-            io.print("\n");
+            tuomaroi(ekanSiirto, tokanSiirto);
             tekoaly.asetaSiirto(ekanSiirto);
 
         } while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));

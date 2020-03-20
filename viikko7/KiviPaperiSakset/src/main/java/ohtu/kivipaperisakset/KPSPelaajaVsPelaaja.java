@@ -9,20 +9,17 @@ public class KPSPelaajaVsPelaaja extends Peli {
     public void pelaa() {
     	String ekanSiirto, tokanSiirto;
     	do {
-	        io.print("Ensimm√§isen pelaajan siirto: ");
-	        ekanSiirto = io.syote();
+	        ekanSiirto = pelaajanSiirto("Ensimm‰isen ");
 	        if (!onkoOkSiirto(ekanSiirto)) {
 	        	break;
 	        }
-	        io.print("Toisen pelaajan siirto: ");
-	        tokanSiirto = io.syote();
-	        if (!onkoOkSiirto(ekanSiirto)) {
+	        tokanSiirto = pelaajanSiirto("Toisen ");
+	        if (!onkoOkSiirto(tokanSiirto)) {
 	        	break;
 	        }
 	        
-	        tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
-	        io.print(tuomari.toString());
-	        io.print("\n");
+	        tuomaroi(ekanSiirto, tokanSiirto);
+	        
     	} while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));
 
         lopetus();

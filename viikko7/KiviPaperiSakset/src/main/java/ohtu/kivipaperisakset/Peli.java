@@ -3,14 +3,14 @@ package ohtu.kivipaperisakset;
 public abstract class Peli {
 	protected IO io;
 	protected Tuomari tuomari;
-	protected TekoAly tekoaly;
+	protected Tekoaly tekoaly;
 	
 	public Peli(IO io, Tuomari tuomari) {
 		this.io = io;
 		this.tuomari = tuomari;
 	}
 	
-	public Peli(IO io, Tuomari tuomari, TekoAly tekoaly) {
+	public Peli(IO io, Tuomari tuomari, Tekoaly tekoaly) {
 		this.io = io;
 		this.tuomari = tuomari;
 		this.tekoaly = tekoaly;

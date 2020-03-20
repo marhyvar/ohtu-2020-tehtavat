@@ -3,7 +3,7 @@ package ohtu.kivipaperisakset;
 
 // "Muistava tekoäly"
 
-public class TekoalyParannettu implements TekoAly {
+public class TekoalyParannettu implements Tekoaly {
   private String[] muisti;
   private int vapaaMuistiIndeksi;
 

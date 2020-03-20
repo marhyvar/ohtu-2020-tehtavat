@@ -12,7 +12,7 @@ public class PeliTehdas {
 		return  new KPSPelaajaVsPelaaja(io, tuomari);
 	}
 	
-	public static Peli luoPeliTekoalyaVastaan(IO io, Tuomari tuomari, TekoAly tekoaly) {
+	public static Peli luoPeliTekoalyaVastaan(IO io, Tuomari tuomari, Tekoaly tekoaly) {
 		return new KPSPelaajaVsTekoaly(io, tuomari, tekoaly);
 	}
     

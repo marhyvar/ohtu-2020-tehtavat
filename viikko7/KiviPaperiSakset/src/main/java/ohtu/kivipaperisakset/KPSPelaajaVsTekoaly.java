@@ -4,35 +4,27 @@ package ohtu.kivipaperisakset;
 // vastaan vai ei
 public class KPSPelaajaVsTekoaly extends Peli {
 	
-	public KPSPelaajaVsTekoaly(IO io, Tuomari tuomari, TekoAly tekoaly) {
+	public KPSPelaajaVsTekoaly(IO io, Tuomari tuomari, Tekoaly tekoaly) {
 		super(io, tuomari, tekoaly);
 	}
 
     public void pelaa() {
-        TekoAly tekoaly = new TekoalyParannettu(20);
-
-        io.print("Ensimmäisen pelaajan siirto: ");
-        String ekanSiirto = io.syote();
-        String tokanSiirto;
-
-
-        tokanSiirto = tekoaly.annaSiirto();
-        io.print("Tietokone valitsi: " + tokanSiirto);
-
-
-        while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
+    	String ekanSiirto, tokanSiirto;
+        
+         do {
+        	io.print("Ensimmäisen pelaajan siirto: ");
+            ekanSiirto = io.syote();
+            if (!onkoOkSiirto(ekanSiirto)) {
+	        	break;
+	        }
+            tokanSiirto = tekoaly.annaSiirto();
+            io.print("Tietokone valitsi: " + tokanSiirto);
             tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
             System.out.println(tuomari);
             io.print("\n");
-
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = io.syote();
-
-            tokanSiirto = tekoaly.annaSiirto();
-            io.print("Tietokone valitsi: " + tokanSiirto);
             tekoaly.asetaSiirto(ekanSiirto);
 
-        }
+        } while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));
 
         lopetus();
     }

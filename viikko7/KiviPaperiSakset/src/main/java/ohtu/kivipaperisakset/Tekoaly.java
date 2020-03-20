@@ -1,6 +1,6 @@
 package ohtu.kivipaperisakset;
 
-public interface TekoAly {
+public interface Tekoaly {
 
 	void asetaSiirto(String siirto);
 

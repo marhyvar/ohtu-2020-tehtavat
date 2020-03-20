@@ -1,6 +1,6 @@
 package ohtu.kivipaperisakset;
 
-public class TekoalyYksinkertainen implements TekoAly {
+public class TekoalyYksinkertainen implements Tekoaly {
 
     int siirto;
 

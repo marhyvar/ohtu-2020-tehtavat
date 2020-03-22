@@ -12,7 +12,7 @@ public class PeliTehdas {
 		pelit = new HashMap<String, Peli>();
 		pelit.put("a", PeliTehdas.luoKaksinPeli(io, new TuomariImpl()));
 		pelit.put("b", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyYksinkertainen()));
-		pelit.put("c", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyParannettu(20)));
+		pelit.put("c", PeliTehdas.luoPeliParannettuaTekoalyaVastaan(io, new TuomariImpl(), 20));
 	}
     
 	public static Peli luoKaksinPeli(IO io, Tuomari tuomari) {
@@ -21,6 +21,10 @@ public class PeliTehdas {
 	
 	public static Peli luoPeliTekoalyaVastaan(IO io, Tuomari tuomari, Tekoaly tekoaly) {
 		return new KPSPelaajaVsTekoaly(io, tuomari, tekoaly);
+	}
+	
+	public static Peli luoPeliParannettuaTekoalyaVastaan(IO io, Tuomari tuomari, int arvo) {
+		return new KPSPelaajaVsTekoaly(io, tuomari, new TekoalyParannettu(arvo));
 	}
 	
 	public void aloita() {

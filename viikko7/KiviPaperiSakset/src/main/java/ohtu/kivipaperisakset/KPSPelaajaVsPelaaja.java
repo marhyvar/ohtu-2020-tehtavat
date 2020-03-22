@@ -8,6 +8,7 @@ public class KPSPelaajaVsPelaaja extends Peli {
 	
     public void pelaa() {
     	String ekanSiirto, tokanSiirto;
+    	aloitus();
     	do {
 	        ekanSiirto = pelaajanSiirto("Ensimmäisen ");
 	        if (!onkoOkSiirto(ekanSiirto)) {

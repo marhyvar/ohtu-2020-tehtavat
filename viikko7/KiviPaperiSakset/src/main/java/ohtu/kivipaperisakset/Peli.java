@@ -20,6 +20,10 @@ public abstract class Peli {
         return "k".equals(siirto) || "p".equals(siirto) || "s".equals(siirto);
     }
 	
+	protected void aloitus() {
+		io.print("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
+	}
+	
 	protected String pelaajanSiirto(String teksti) {
 		String pelaaja;
 		io.print(teksti + " pelaajan siirto: ");

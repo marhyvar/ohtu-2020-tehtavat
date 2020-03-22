@@ -12,7 +12,7 @@ public class TekoalyParannettu implements Tekoaly {
     vapaaMuistiIndeksi = 0;
   }
   
-  @Override
+@Override
 public void asetaSiirto(String siirto) {
     // jos muisti täyttyy, unohdetaan viimeinen alkio
     if(vapaaMuistiIndeksi == muisti.length) {
@@ -28,7 +28,7 @@ public void asetaSiirto(String siirto) {
   }
 
   
-  @Override
+@Override
 public String annaSiirto() {
     if(vapaaMuistiIndeksi == 0 || vapaaMuistiIndeksi == 1) {
       return "k";

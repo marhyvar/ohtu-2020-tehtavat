@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class PeliTehdas {
     
-    private IO io;
-    private HashMap<String, Peli> pelit;
+	private IO io;
+	private HashMap<String, Peli> pelit;
     
 	public PeliTehdas(IO io) {
 		this.io = io;
@@ -25,19 +25,19 @@ public class PeliTehdas {
 	
 	public void aloita() {
 		while (true) {
-            io.print("\nValitse pelataanko"
+			io.print("\nValitse pelataanko"
                     + "\n (a) ihmistä vastaan "
                     + "\n (b) tekoälyä vastaan"
                     + "\n (c) parannettua tekoälyä vastaan"
                     + "\nmuilla valinnoilla lopetataan");
 
-            String valinta = io.syote();
-            if (valinta.equalsIgnoreCase("a") || valinta.equalsIgnoreCase("b") || valinta.equalsIgnoreCase("c")) {
-            	io.print("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-            	pelit.get(valinta).pelaa();
-            } else {
-            	break;
-            }
+			String valinta = io.syote();
+			if (valinta.equalsIgnoreCase("a") || valinta.equalsIgnoreCase("b") || valinta.equalsIgnoreCase("c")) {
+				io.print("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
+				pelit.get(valinta).pelaa();
+			} else {
+				break;
+			}
 
 		}
 	}

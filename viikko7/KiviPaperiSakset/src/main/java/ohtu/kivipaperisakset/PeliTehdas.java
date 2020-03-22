@@ -1,11 +1,18 @@
 package ohtu.kivipaperisakset;
 
+import java.util.HashMap;
+
 public class PeliTehdas {
     
     private IO io;
+    private HashMap<String, Peli> pelit;
     
     public PeliTehdas(IO io) {
     	this.io = io;
+    	pelit = new HashMap<String, Peli>();
+    	pelit.put("a", PeliTehdas.luoKaksinPeli(io, new TuomariImpl()));
+    	pelit.put("b", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyYksinkertainen()));
+    	pelit.put("c", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyParannettu(20)));
     }
     
 	public static Peli luoKaksinPeli(IO io, Tuomari tuomari) {
@@ -24,18 +31,12 @@ public class PeliTehdas {
                     + "\n (c) parannettua tekoälyä vastaan"
                     + "\nmuilla valinnoilla lopetataan");
 
-            String vastaus = io.syote();
-            if (vastaus.endsWith("a")) {
-                Peli kaksinpeli = PeliTehdas.luoKaksinPeli(io, new TuomariImpl());
-                kaksinpeli.pelaa();
-            } else if (vastaus.endsWith("b")) {
-                Peli yksinpeli = PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyYksinkertainen());
-                yksinpeli.pelaa();
-            } else if (vastaus.endsWith("c")) {
-                Peli pahaYksinpeli = PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyParannettu(20));
-                pahaYksinpeli.pelaa();
+            String valinta = io.syote();
+            if (valinta.equalsIgnoreCase("a") || valinta.equalsIgnoreCase("b") || valinta.equalsIgnoreCase("c")) {
+            	io.print("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
+            	pelit.get(valinta).pelaa();
             } else {
-                break;
+            	break;
             }
 
         }

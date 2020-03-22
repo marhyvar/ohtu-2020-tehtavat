@@ -7,13 +7,13 @@ public class PeliTehdas {
     private IO io;
     private HashMap<String, Peli> pelit;
     
-    public PeliTehdas(IO io) {
-    	this.io = io;
-    	pelit = new HashMap<String, Peli>();
-    	pelit.put("a", PeliTehdas.luoKaksinPeli(io, new TuomariImpl()));
-    	pelit.put("b", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyYksinkertainen()));
-    	pelit.put("c", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyParannettu(20)));
-    }
+	public PeliTehdas(IO io) {
+		this.io = io;
+		pelit = new HashMap<String, Peli>();
+		pelit.put("a", PeliTehdas.luoKaksinPeli(io, new TuomariImpl()));
+		pelit.put("b", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyYksinkertainen()));
+		pelit.put("c", PeliTehdas.luoPeliTekoalyaVastaan(io, new TuomariImpl(), new TekoalyParannettu(20)));
+	}
     
 	public static Peli luoKaksinPeli(IO io, Tuomari tuomari) {
 		return  new KPSPelaajaVsPelaaja(io, tuomari);
@@ -39,7 +39,7 @@ public class PeliTehdas {
             	break;
             }
 
-        }
+		}
 	}
     
 }

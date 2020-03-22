@@ -6,10 +6,10 @@ public class KPSPelaajaVsPelaaja extends Peli {
 		super(io, tuomari);
 	}
 	
-    public void pelaa() {
-    	String ekanSiirto, tokanSiirto;
-
-    	do {
+	public void pelaa() {
+		String ekanSiirto, tokanSiirto;
+	
+		do {
 	        ekanSiirto = pelaajanSiirto("Ensimmäisen ");
 	        if (!onkoOkSiirto(ekanSiirto)) {
 	        	break;
@@ -21,9 +21,9 @@ public class KPSPelaajaVsPelaaja extends Peli {
 	        
 	        tuomaroi(ekanSiirto, tokanSiirto);
 	        
-    	} while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));
-
-        lopetus();
-    }
+		} while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));
+	
+	    lopetus();
+	}
 
 }
